@@ -15,6 +15,6 @@ import com.example.guoxw.oopdemo.Factories.FactoryInterfaces.IProduct.ICar;
  */
 public interface IFactory {
 
-    ICar createCar();
+    ICar createCar(int witch);
 
 }

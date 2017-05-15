@@ -10,6 +10,8 @@ package com.example.guoxw.oopdemo.Factories.FactoryInterfaces.IProduct;
 
 /**
  * 产品接口
+ * <p>
+ * 将对象抽象成接口
  */
 public interface ICar {
 
