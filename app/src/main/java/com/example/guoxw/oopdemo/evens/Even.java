@@ -4,6 +4,8 @@ import com.example.guoxw.oopdemo.bean.Person;
 
 /**
  * Created by guoxw on 2017/5/12.
+ * <p>
+ * 对javaBean类的一个封装
  *
  * @auther guoxw
  * @createTime 2017/5/12 14:12

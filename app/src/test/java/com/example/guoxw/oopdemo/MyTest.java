@@ -1,5 +1,6 @@
 package com.example.guoxw.oopdemo;
 
+import com.example.guoxw.oopdemo.bean.Bird;
 import com.example.guoxw.oopdemo.bean.Child;
 import com.example.guoxw.oopdemo.bean.Listeners.MyPersonListener;
 import com.example.guoxw.oopdemo.bean.Parent;
@@ -41,6 +42,15 @@ public class MyTest {
         //出发监听
         parent.runFast();
         parent.eatFood("sandwich");
+
+        /*-----------------------------------------------------------------------------------------------*/
+
+        Bird bird = new Bird("yellow");
+        bird.fly();
+        //虫子
+        bird.eatFood(" bug！");
+
+
 
     }
 
