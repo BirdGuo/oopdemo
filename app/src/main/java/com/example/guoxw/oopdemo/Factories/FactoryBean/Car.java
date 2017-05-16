@@ -12,7 +12,7 @@ import com.example.guoxw.oopdemo.Factories.FactoryInterfaces.IProduct.ICar;
 
 public class Car implements ICar{
 
-
+    //饿汉模式hungry
 
     @Override
     public void carMethod() {
