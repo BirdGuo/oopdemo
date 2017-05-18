@@ -13,6 +13,7 @@ import com.example.guoxw.oopdemo.bean.HungrySingleton;
 import com.example.guoxw.oopdemo.bean.LazySingleton;
 import com.example.guoxw.oopdemo.mybuilder.Directors.Director;
 import com.example.guoxw.oopdemo.mybuilder.Product;
+import com.example.guoxw.oopdemo.prototypes.createrbuilders.ConcreatePDog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,6 +63,15 @@ public class MainActivity extends AppCompatActivity {
         bmwProduct.showProduct();
         Log.i(TAG, "Director benzProduct" + benzProduct.toString());
         Log.i(TAG, "Director bmwProduct" + bmwProduct.toString());
+
+        //原型
+        ConcreatePDog concreatePDog = new ConcreatePDog("gougou", 12);
+
+        for (int i = 0; i < 10; i++) {
+            ConcreatePDog clone = (ConcreatePDog) concreatePDog.clone();
+            clone.setAge(i);
+            clone.show();
+        }
 
     }
 }
