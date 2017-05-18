@@ -14,6 +14,7 @@ import com.example.guoxw.oopdemo.bean.LazySingleton;
 import com.example.guoxw.oopdemo.mybuilder.Directors.Director;
 import com.example.guoxw.oopdemo.mybuilder.Product;
 import com.example.guoxw.oopdemo.prototypes.createrbuilders.ConcreatePDog;
+import com.example.guoxw.oopdemo.templateModel.createBuilder.ConCreateSort;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
             clone.setAge(i);
             clone.show();
         }
+
+        int[] a = {10, 32, 1, 9, 5, 7, 12, 0, 4, 3}; // 预设数据数组
+        ConCreateSort conCreateSort = new ConCreateSort();
+        conCreateSort.showSortResult(a);
 
     }
 }
