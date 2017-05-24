@@ -11,6 +11,11 @@ import com.example.guoxw.oopdemo.Factories.FactoryInterfaces.IProduct.IVolkswage
 import com.example.guoxw.oopdemo.Factories.SimpleCarFactory;
 import com.example.guoxw.oopdemo.bean.HungrySingleton;
 import com.example.guoxw.oopdemo.bean.LazySingleton;
+import com.example.guoxw.oopdemo.intermediaryModel.AbstractColleague;
+import com.example.guoxw.oopdemo.intermediaryModel.AbstractMediator;
+import com.example.guoxw.oopdemo.intermediaryModel.ColleagueA;
+import com.example.guoxw.oopdemo.intermediaryModel.ColleagueB;
+import com.example.guoxw.oopdemo.intermediaryModel.Mediator;
 import com.example.guoxw.oopdemo.mybuilder.Directors.Director;
 import com.example.guoxw.oopdemo.mybuilder.Product;
 import com.example.guoxw.oopdemo.prototypes.createrbuilders.ConcreatePDog;
@@ -77,6 +82,21 @@ public class MainActivity extends AppCompatActivity {
         int[] a = {10, 32, 1, 9, 5, 7, 12, 0, 4, 3}; // 预设数据数组
         ConCreateSort conCreateSort = new ConCreateSort();
         conCreateSort.showSortResult(a);
+
+        AbstractColleague colleagueA = new ColleagueA();
+        AbstractColleague colleagueB = new ColleagueB();
+
+        AbstractMediator abstractMediator = new Mediator(colleagueA, colleagueB);
+
+        Log.i(TAG, "---------------------------通过设置A影响B----------------------------");
+        colleagueA.setNumber(10, abstractMediator);
+        Log.i(TAG, "colleagueA:" + colleagueA.getNumber());
+        Log.i(TAG, "colleagueB:" + colleagueB.getNumber());
+
+        Log.i(TAG, "---------------------------通过设置B影响A----------------------------");
+        colleagueB.setNumber(200, abstractMediator);
+        Log.i(TAG, "colleagueA:" + colleagueA.getNumber());
+        Log.i(TAG, "colleagueB:" + colleagueB.getNumber());
 
     }
 }
