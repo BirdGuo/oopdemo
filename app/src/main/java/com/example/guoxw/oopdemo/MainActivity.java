@@ -18,6 +18,10 @@ import com.example.guoxw.oopdemo.intermediaryModel.ColleagueB;
 import com.example.guoxw.oopdemo.intermediaryModel.Mediator;
 import com.example.guoxw.oopdemo.mybuilder.Directors.Director;
 import com.example.guoxw.oopdemo.mybuilder.Product;
+import com.example.guoxw.oopdemo.obsersverModel.ConcerateObserver1;
+import com.example.guoxw.oopdemo.obsersverModel.ConcerateObserver2;
+import com.example.guoxw.oopdemo.obsersverModel.ConcreateSubject;
+import com.example.guoxw.oopdemo.obsersverModel.MySubject;
 import com.example.guoxw.oopdemo.prototypes.createrbuilders.ConcreatePDog;
 import com.example.guoxw.oopdemo.templateModel.createBuilder.ConCreateSort;
 
@@ -97,6 +101,12 @@ public class MainActivity extends AppCompatActivity {
         colleagueB.setNumber(200, abstractMediator);
         Log.i(TAG, "colleagueA:" + colleagueA.getNumber());
         Log.i(TAG, "colleagueB:" + colleagueB.getNumber());
+
+        MySubject subject = new ConcreateSubject();
+
+        subject.addObserver(new ConcerateObserver1());
+        subject.addObserver(new ConcerateObserver2());
+        subject.doSomething();
 
     }
 }
