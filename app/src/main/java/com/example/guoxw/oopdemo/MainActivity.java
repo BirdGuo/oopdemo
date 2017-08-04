@@ -24,6 +24,11 @@ import com.example.guoxw.oopdemo.obsersverModel.ConcreateSubject;
 import com.example.guoxw.oopdemo.obsersverModel.MySubject;
 import com.example.guoxw.oopdemo.prototypes.createrbuilders.ConcreatePDog;
 import com.example.guoxw.oopdemo.templateModel.createBuilder.ConCreateSort;
+import com.example.guoxw.oopdemo.visitModel.Element;
+import com.example.guoxw.oopdemo.visitModel.ObjectStruture;
+import com.example.guoxw.oopdemo.visitModel.Visitor;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -107,6 +112,11 @@ public class MainActivity extends AppCompatActivity {
         subject.addObserver(new ConcerateObserver1());
         subject.addObserver(new ConcerateObserver2());
         subject.doSomething();
+
+        List<Element> list = ObjectStruture.getList();
+        for (Element element : list){
+            element.accept(new Visitor());
+        }
 
     }
 }
