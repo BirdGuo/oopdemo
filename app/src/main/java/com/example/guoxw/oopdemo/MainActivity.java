@@ -9,6 +9,9 @@ import com.example.guoxw.oopdemo.Factories.FactoryInterfaces.IProduct.IAudi;
 import com.example.guoxw.oopdemo.Factories.FactoryInterfaces.IProduct.ICar;
 import com.example.guoxw.oopdemo.Factories.FactoryInterfaces.IProduct.IVolkswagen;
 import com.example.guoxw.oopdemo.Factories.SimpleCarFactory;
+import com.example.guoxw.oopdemo.OrderModel.ConcreateCommand;
+import com.example.guoxw.oopdemo.OrderModel.Invoker;
+import com.example.guoxw.oopdemo.OrderModel.Receiver;
 import com.example.guoxw.oopdemo.bean.HungrySingleton;
 import com.example.guoxw.oopdemo.bean.LazySingleton;
 import com.example.guoxw.oopdemo.intermediaryModel.AbstractColleague;
@@ -114,9 +117,31 @@ public class MainActivity extends AppCompatActivity {
         subject.doSomething();
 
         List<Element> list = ObjectStruture.getList();
-        for (Element element : list){
+        for (Element element : list) {
             element.accept(new Visitor());
         }
+
+        client();
+
+    }
+
+    /**
+     * 命令模式 具体调用类
+     * 客户端
+     */
+    private void client() {
+
+        //接受者
+        Receiver receiver = new Receiver();
+        //具体命令
+        ConcreateCommand concreateCommand = new ConcreateCommand(receiver);
+        //执行命令 客户端直接执行具体命令方式（此方式与类图相符） //这步不是必要的
+//        concreateCommand.execute();
+
+        //客户端通过调用者来执行命令
+        Invoker invoker = new Invoker();
+        invoker.setCommand(concreateCommand);
+        invoker.action();
 
     }
 }
