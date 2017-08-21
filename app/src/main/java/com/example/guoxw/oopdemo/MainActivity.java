@@ -26,6 +26,12 @@ import com.example.guoxw.oopdemo.obsersverModel.ConcerateObserver2;
 import com.example.guoxw.oopdemo.obsersverModel.ConcreateSubject;
 import com.example.guoxw.oopdemo.obsersverModel.MySubject;
 import com.example.guoxw.oopdemo.prototypes.createrbuilders.ConcreatePDog;
+import com.example.guoxw.oopdemo.responsibilityChain.ConCreateHandler1;
+import com.example.guoxw.oopdemo.responsibilityChain.ConCreateHandler2;
+import com.example.guoxw.oopdemo.responsibilityChain.ConCreateHandler3;
+import com.example.guoxw.oopdemo.responsibilityChain.Level;
+import com.example.guoxw.oopdemo.responsibilityChain.Request;
+import com.example.guoxw.oopdemo.responsibilityChain.Response;
 import com.example.guoxw.oopdemo.templateModel.createBuilder.ConCreateSort;
 import com.example.guoxw.oopdemo.visitModel.Element;
 import com.example.guoxw.oopdemo.visitModel.ObjectStruture;
@@ -121,7 +127,11 @@ public class MainActivity extends AppCompatActivity {
             element.accept(new Visitor());
         }
 
+        //命令模式
         client();
+
+        //责任链模式
+        clientResponse();
 
     }
 
@@ -142,6 +152,21 @@ public class MainActivity extends AppCompatActivity {
         Invoker invoker = new Invoker();
         invoker.setCommand(concreateCommand);
         invoker.action();
+
+    }
+
+    /**
+     * 责任模式客户端
+     */
+    private void clientResponse() {
+        ConCreateHandler1 conCreateHandler1 = new ConCreateHandler1();
+        ConCreateHandler2 concreateHandler2 = new ConCreateHandler2();
+        ConCreateHandler3 conCreateHandler3 = new ConCreateHandler3();
+
+        conCreateHandler1.setNextHandler(concreateHandler2);
+        concreateHandler2.setNextHandler(conCreateHandler3);
+
+        Response response = conCreateHandler1.handleRequest(new Request(new Level(20)));
 
     }
 }
