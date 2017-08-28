@@ -32,6 +32,9 @@ import com.example.guoxw.oopdemo.responsibilityChain.ConCreateHandler3;
 import com.example.guoxw.oopdemo.responsibilityChain.Level;
 import com.example.guoxw.oopdemo.responsibilityChain.Request;
 import com.example.guoxw.oopdemo.responsibilityChain.Response;
+import com.example.guoxw.oopdemo.strategy.ConcreateStrategy1;
+import com.example.guoxw.oopdemo.strategy.ConcreateStrategy2;
+import com.example.guoxw.oopdemo.strategy.MyContext;
 import com.example.guoxw.oopdemo.templateModel.createBuilder.ConCreateSort;
 import com.example.guoxw.oopdemo.visitModel.Element;
 import com.example.guoxw.oopdemo.visitModel.ObjectStruture;
@@ -133,6 +136,9 @@ public class MainActivity extends AppCompatActivity {
         //责任链模式
         clientResponse();
 
+        //策略模式
+        clientStrategy();
+
     }
 
     /**
@@ -169,4 +175,22 @@ public class MainActivity extends AppCompatActivity {
         Response response = conCreateHandler1.handleRequest(new Request(new Level(20)));
 
     }
+
+    /**
+     * 策略模式
+     */
+    private void clientStrategy() {
+
+        MyContext myContext;
+        Log.i("GXW", "-------------执行策略1------------");
+        myContext = new MyContext(new ConcreateStrategy1());
+        myContext.execute();
+
+        Log.i("GXW", "-------------执行策略2------------");
+        myContext = new MyContext(new ConcreateStrategy2());
+        myContext.execute();
+
+
+    }
+
 }
