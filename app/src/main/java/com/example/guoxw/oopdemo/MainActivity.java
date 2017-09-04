@@ -17,6 +17,7 @@ import com.example.guoxw.oopdemo.OrderModel.Invoker;
 import com.example.guoxw.oopdemo.OrderModel.Receiver;
 import com.example.guoxw.oopdemo.bean.HungrySingleton;
 import com.example.guoxw.oopdemo.bean.LazySingleton;
+import com.example.guoxw.oopdemo.expressionmodel.Expression;
 import com.example.guoxw.oopdemo.intermediaryModel.AbstractColleague;
 import com.example.guoxw.oopdemo.intermediaryModel.AbstractMediator;
 import com.example.guoxw.oopdemo.intermediaryModel.ColleagueA;
@@ -44,6 +45,7 @@ import com.example.guoxw.oopdemo.visitModel.ObjectStruture;
 import com.example.guoxw.oopdemo.visitModel.Visitor;
 
 import java.util.List;
+import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -196,7 +198,6 @@ public class MainActivity extends AppCompatActivity {
         myContext = new MyContext(new ConcreateStrategy2());
         myContext.execute();
 
-
     }
 
     /**
@@ -214,6 +215,21 @@ public class MainActivity extends AppCompatActivity {
 //            System.out.println(str);
             Log.i("GXW", "----------" + str);
         }
+    }
+
+    private void clientExpression(){
+        String expression = "";
+        char[] chars = expression.toCharArray();
+        com.example.guoxw.oopdemo.expressionmodel.MyContext myContext = new com.example.guoxw.oopdemo.expressionmodel.MyContext();
+
+        Stack<Expression> expressions = new Stack<>();
+
+        for (int i = 0;i<chars.length;i++){
+
+        }
+
+        Expression pop = expressions.pop();
+        pop.interperter(myContext);
     }
 
 }
