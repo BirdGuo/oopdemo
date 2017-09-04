@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.example.guoxw.oopdemo.Aggregate.ConcreateAggregate;
+import com.example.guoxw.oopdemo.Aggregate.Iterator;
+import com.example.guoxw.oopdemo.Aggregate.MyAggregate;
 import com.example.guoxw.oopdemo.Factories.AbstractCarFactory;
 import com.example.guoxw.oopdemo.Factories.FactoryInterfaces.IProduct.IAudi;
 import com.example.guoxw.oopdemo.Factories.FactoryInterfaces.IProduct.ICar;
@@ -139,6 +142,9 @@ public class MainActivity extends AppCompatActivity {
         //策略模式
         clientStrategy();
 
+        //迭代器模式
+        clientAggregate();
+
     }
 
     /**
@@ -191,6 +197,23 @@ public class MainActivity extends AppCompatActivity {
         myContext.execute();
 
 
+    }
+
+    /**
+     * 迭代器模式
+     */
+    private void clientAggregate() {
+        MyAggregate ag = new ConcreateAggregate();
+        ag.add("小明");
+        ag.add("小红");
+        ag.add("小刚");
+        Iterator it = ag.iterator();
+        Log.i("GXW", "----------clientAggregate---------:" + ag.size());
+        while (it.hasNext()) {
+            String str = (String) it.next();
+//            System.out.println(str);
+            Log.i("GXW", "----------" + str);
+        }
     }
 
 }
