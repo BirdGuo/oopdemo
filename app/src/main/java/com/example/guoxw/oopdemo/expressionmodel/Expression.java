@@ -7,8 +7,7 @@ package com.example.guoxw.oopdemo.expressionmodel;
  * @createTime 2017/9/4 0004 10:16
  * @packageName com.example.guoxw.oopdemo.expressionmodel
  */
-
-public abstract class Expression {
+abstract public class Expression {
 
     public abstract Object interperter(MyContext context);
 

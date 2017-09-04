@@ -12,6 +12,8 @@ import com.example.guoxw.oopdemo.Factories.FactoryInterfaces.IProduct.IAudi;
 import com.example.guoxw.oopdemo.Factories.FactoryInterfaces.IProduct.ICar;
 import com.example.guoxw.oopdemo.Factories.FactoryInterfaces.IProduct.IVolkswagen;
 import com.example.guoxw.oopdemo.Factories.SimpleCarFactory;
+import com.example.guoxw.oopdemo.MementoModel.Caretaker;
+import com.example.guoxw.oopdemo.MementoModel.Originator;
 import com.example.guoxw.oopdemo.OrderModel.ConcreateCommand;
 import com.example.guoxw.oopdemo.OrderModel.Invoker;
 import com.example.guoxw.oopdemo.OrderModel.Receiver;
@@ -147,6 +149,9 @@ public class MainActivity extends AppCompatActivity {
         //迭代器模式
         clientAggregate();
 
+        //备忘录模式
+        clientMemento();
+
     }
 
     /**
@@ -217,9 +222,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 解释器模式
+     */
     private void clientExpression(){
         String expression = "";
         char[] chars = expression.toCharArray();
+
         com.example.guoxw.oopdemo.expressionmodel.MyContext myContext = new com.example.guoxw.oopdemo.expressionmodel.MyContext();
 
         Stack<Expression> expressions = new Stack<>();
@@ -230,6 +239,21 @@ public class MainActivity extends AppCompatActivity {
 
         Expression pop = expressions.pop();
         pop.interperter(myContext);
+    }
+
+    /**
+     * 备忘录模式
+     */
+    private void clientMemento(){
+        Originator originator = new Originator();
+        originator.setState("状态1");
+        Log.i(TAG,"初始状态:"+originator.getState());
+        Caretaker caretaker = new Caretaker();
+        caretaker.setMemento(originator.createMemento());
+        originator.setState("状态2");
+        Log.i(TAG,"改变后状态:"+originator.getState());
+        originator.restoreMemento(caretaker.getMemento());
+        Log.i(TAG,"恢复后状态:"+originator.getState());
     }
 
 }

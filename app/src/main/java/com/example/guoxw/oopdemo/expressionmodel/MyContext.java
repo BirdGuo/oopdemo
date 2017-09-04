@@ -9,4 +9,7 @@ package com.example.guoxw.oopdemo.expressionmodel;
  */
 
 public class MyContext {
+
+    public MyContext() {
+    }
 }
